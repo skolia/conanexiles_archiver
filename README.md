@@ -20,12 +20,12 @@ Simply open the batch file in notepad and in the top section, change the variabl
 
 #### Configuration File
 
-With notepad call it archive_conan_exiles.txt and it can be stored in any of the following locations:
+With notepad call it `archive_conan_exiles.txt` and it can be stored in any of the following locations:
 
-`%PUBLIC%\Config\Documents`
-`%PUBLIC%\Config``
-`%PUBLIC%\Documents`
-`%USERPROFILE%\Documents`
+```%PUBLIC%\Config\Documents
+%PUBLIC%\Config
+%PUBLIC%\Documents
+%USERPROFILE%\Documents```
 
 
 or just in the same directory as the batch file.
@@ -37,7 +37,7 @@ You can use semi colons for commentting lines.
 
 Sample:
 
-`
+```
 ;	Conan Exiles
 ;	Archiver Config
 ;
@@ -50,7 +50,7 @@ opt_use_game_sqlite=1
 opt_abort_backup_if_db_not_ok=1
 opt_wait_for_process_exit=0
 opt_wait_for_process_exit_interval=60
-opt_wait_for_process_exit_max_interval=2`
+opt_wait_for_process_exit_max_interval=2```
 
 NOTE: When using a configuration file, it's best to substitute the final settings of a variable, for example, don't set `steam_library` just set `save_path` instead.
 
