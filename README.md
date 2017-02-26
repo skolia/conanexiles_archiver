@@ -22,10 +22,10 @@ Simply open the batch file in notepad and in the top section, change the variabl
 
 With notepad call it archive_conan_exiles.txt and it can be stored in any of the following locations:
 
-`%PUBLIC%\Config\Documents
-`%PUBLIC%\Conifg
-%PUBLIC%\Documents
-%USERPROFILE%\Documents`
+`%PUBLIC%\Config\Documents`
+`%PUBLIC%\Config``
+`%PUBLIC%\Documents`
+`%USERPROFILE%\Documents`
 
 
 or just in the same directory as the batch file.
