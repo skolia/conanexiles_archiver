@@ -31,8 +31,9 @@ REM	----------------------------------------------------
 
 set game_name=Conan Exiles
 set script_name=Game Archiver
-set script_version=201702261342
+set script_version=201702261442
 set database_name=game.db
+set config_file=archive_conan_exiles.conf
 set conan_exe=ConanSandbox.exe
 set windows_program_files=%ProgramFiles(x86)%
 if not defined windows_program_files set windows_program_files=%ProgramFiles%
@@ -61,6 +62,22 @@ set z_path=%ProgramFiles%\7-Zip\7z.exe
 set z_arg=a -r -y
 set z_ext=7z
 
+REM	----------------------------------------------------
+REM	Determine Configuration Path
+REM	----------------------------------------------------
+
+set base_config_path_local=.
+set base_config_path_documents=%USERPROFILE%\Documents
+set base_config_path_public=%PUBLIC%\Documents
+set base_config_path_public_config=%PUBLIC%\Config
+set base_config_path_public_config_backup=%PUBLIC%\Config\Backup
+
+set config_pathname=%base_config_path_local%\%config_file%
+if exist "%base_config_path_public_config_backup%\%config_file%" set config_pathname=%base_config_path_public_config_backup%\%config_file%
+if exist "%base_config_path_public_config%\%config_file%" set config_pathname=%base_config_path_public_config%\%config_file%
+if exist "%base_config_path_public%\%config_file%" set config_pathname=%base_config_path_public%\%config_file%
+if exist "%base_config_path_documents%\%config_file%" set config_pathname=%base_config_path_documents%\%config_file%
+if exist "%base_config_path_local%\%config_file%" set config_pathname=%base_config_path_local%\%config_file%
 
 REM	----------------------------------------------------
 REM	Options
@@ -94,6 +111,17 @@ set save_name=
 set timestamp=
 set status_conan=0
 set flag_timeout=0
+set flag_config_exists=0
+set using_config_file=0
+
+
+REM	----------------------------------------------------
+REM	Load Configuration File (If Exists)
+REM	----------------------------------------------------
+
+if defined config_pathname if exist "%config_pathname%" set flag_config_exists=1
+if [%flag_config_exists%]==[1] FOR /F "eol=; tokens=1,2* delims==" %%i in (%config_pathname%) do if not [%%i]==[] set %%i=%%j
+if [%flag_config_exists%]==[1] set using_config_file=1
 
 REM	----------------------------------------------------
 REM	Processs Command Line Arguments
@@ -118,6 +146,7 @@ if [%option%]==[checkdatabase] set opt_check_db=1
 if [%option%]==[checkdb] set opt_check_db=1
 if not defined database_name set opt_check_db=0
 
+
 REM	----------------------------------------------------
 REM	Check Options
 REM	----------------------------------------------------
@@ -139,6 +168,9 @@ REM	Start
 REM	----------------------------------------------------
 
 call :show_banner
+
+if [%using_config_file%]==[1] echo Loaded Configuration File (%config_pathname%)
+if [%using_config_file%]==[0] echo Using Local Settings 
 
 REM	----------------------------------------------------
 REM	Configuration Check
@@ -241,7 +273,7 @@ REM	----------------------------------------------------
 
 
 REM	-------------------------
-REM	Error
+REM	Exit: Error
 REM	-------------------------
 :error_exit
 echo Operation Aborted.
@@ -250,7 +282,7 @@ if defined error_message echo %error_message%
 goto :eof
 
 REM	-------------------------
-REM	Exit
+REM	Exit: Already Running
 REM	-------------------------
 
 :already_running
@@ -279,6 +311,7 @@ if not defined timestamp set timestamp=%_datetime:~0,12%
 if not defined timestamp set timestamp=%date%:~10,4%%date%:~4,2%%date%:~7,2%%time%:0,2%%time%:3,2%%time%:6,2%
 endlocal & set "%1=%timestamp%" & goto :eof
 
+
 REM	-----------------------
 REM	Get Conan Status
 REM	Usage: get_process_status [process_name] variable
@@ -290,6 +323,7 @@ set task_process_name=%~1
 set conan_running=0
 if defined task_process_name FOR /F %%x IN ('tasklist /NH /FI "IMAGENAME eq %task_process_name%"') DO IF %%x == %task_process_name% set %2=1
 goto :eof
+
 
 REM	-----------------------
 REM	Check Database
@@ -355,6 +389,7 @@ echo database_name: %database_name%
 echo conan_exe: %conan_exe%
 echo.
 echo Configuration:
+echo config_pathname: %config_pathname%
 echo windows_program_files: %windows_program_files%
 echo steam_library: %steam_library%
 echo backup_base: %backup_base%
@@ -397,4 +432,3 @@ echo show	show settings and exit
 echo help	this menu
 echo checkdb	check %game_name% database first
 goto :eof
-
