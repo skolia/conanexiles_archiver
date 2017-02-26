@@ -25,7 +25,8 @@ With notepad call it `archive_conan_exiles.txt` and it can be stored in any of t
 ```
 %PUBLIC%\Config\Documents
 %PUBLIC%\Config
-%PUBLIC%\Documents%USERPROFILE%\Documents
+%PUBLIC%\Documents
+%USERPROFILE%\Documents
 ```
 
 or just in the same directory as the batch file.
