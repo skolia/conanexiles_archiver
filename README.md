@@ -1,4 +1,4 @@
- 
+
 # Conan Exiles Archiver
 
 This is a tool (Windows Batch File) that can archive Conan Exiles configuration and database and store it in an archive.
@@ -11,7 +11,7 @@ This is a tool (Windows Batch File) that can archive Conan Exiles configuration 
 
 ### Getting Started
 
-1. Place the batch file somewhere on your system.  (I have a folder called "C:\Batch")
+1. Place the batch file somewhere on your system.  (I have a folder called `C:\Batch`)
 2. Open notepad and create a configuration file *or* edit the batch file to tell it where to put things and set options
 3. Open a command prompt or double click on the batch file to run (if you do the latter, it does not pause at the end but I'll add that as an option soon).
 
@@ -26,7 +26,7 @@ Edit the sample file provided or create a batch file (text) with your favorite t
 
 ```
 %PUBLIC%\Config\Documents
-`%PUBLIC%\Config
+%PUBLIC%\Config
 %PUBLIC%\Documents
 %USERPROFILE%\Documents
 ```
