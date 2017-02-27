@@ -22,7 +22,7 @@ Simply open the batch file in notepad and in the top section, change the variabl
 
 ##### Configuration File
 
-opt_pause_on_end=1Edit the sample file provided or create a batch file (text) with your favorite text editor (notepad works) and call the file `archive_conan_exiles.txt`.  You can save it in any of the following locations:
+Edit the sample file provided or create a batch file (text) with your favorite text editor (notepad works) and call the file `archive_conan_exiles.txt`.  You can save it in any of the following locations:
 
 ```
 %PUBLIC%\Config\Documents
