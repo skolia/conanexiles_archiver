@@ -67,7 +67,7 @@ opt_pause_on_end=0
 ### Options
 
 | *Option* | *Usage* | *Default* | *Notes* |
-| --- | --- | --- | --- |
+| :--- | :--- | :--- | :--- |
 | `opt_delete_unless_success` | If the archive process has any errors or warnings, delete the archive. | 1 | |
 | `opt_check_db` | Check *Conan Exiles* database before starting the backup. | 1 | |
 | `opt_use_game_sqlite` | Use the game's copy of SQLite3 | 1 | Recommended |
@@ -81,7 +81,7 @@ opt_pause_on_end=0
 ### Other Variables & Notes
 
 | *Variable* | *Usage* | *Default* | *Notes* |
-| --- | --- | --- | --- |
+| :--- | :--- | :--- | :--- |
 | `steam_library` | Points to where your Steam library is. | Default is `C:\Program Files (x86)\Steam\` | |
 | `backup_base` | Base directory where you want to store backups. | | |
 | `backup_prefix` | Optional prefix for the backup filename, the filename is `YYYYMMDDHHMM`. | `conan_exiles_` | |
