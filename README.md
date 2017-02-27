@@ -57,7 +57,7 @@ opt_wait_for_process_exit_max_interval=2
 opt_pause_on_end=0
 ```
 
-*IMPORTANT:* Variable substitutions are *not* available in the configuration file so %COMPUTERNAME% and %USERPROFILE% will *not* work.  They will work if you use them in the batch file.
+*IMPORTANT:* Variable substitutions are *not* available in the configuration file so `%COMPUTERNAME%` and `%USERPROFILE%` will *not* work.  They will work if you use them in the batch file.
 
 *NOTE:* When using a configuration file, it's best to substitute the final settings of a variable, for example, don't set `steam_library` just set `save_path` instead.
 
