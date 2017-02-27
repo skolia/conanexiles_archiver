@@ -26,7 +26,7 @@ Edit the sample file provided or create a batch file (text) with your favorite t
 
 ```
 %PUBLIC%\Config\Documents
-%PUBLIC%\Config
+`%PUBLIC%\Config
 %PUBLIC%\Documents
 %USERPROFILE%\Documents
 ```
@@ -87,6 +87,6 @@ opt_pause_on_end=0
 | `backup_prefix` | Optional prefix for the backup filename, the filename is `YYYYMMDDHHMM`. | `conan_exiles_` | |
 | `save_path` | Calcuated variable (using `steam_library` as the base) to locate the data directory for *Conan Exiles*. | `steam_library\steamapps\common\Conan Exiles\ConanSandbox\Saved` | |
 | `db_tool` | Database tool to use for database checks.  | `sqlite3.exe` | |
-| `z_path` | Complete pathname to the 7-Zip executable called `7z.exe` | | |
+| `z_path` | Complete pathname to the 7-Zip executable called `7z.exe` | `C:\Program Files\7-Zip\7z.exe` | |
 | `z_arg` | Arguments to give 7-Zip. | `a -r -y` | |
 | `z_ext` | Extension for the backup archive. | `7z` | |
