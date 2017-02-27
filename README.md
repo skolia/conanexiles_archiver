@@ -56,6 +56,8 @@ opt_wait_for_process_exit_interval=60
 opt_wait_for_process_exit_max_interval=2
 ```
 
+*IMPORTANT:* Variable substitutions are *not* available in the configuration file so %COMPUTERNAME% and %USERPROFILE% will *not* work.  They will work if you use them in the batch file.
+
 *NOTE:* When using a configuration file, it's best to substitute the final settings of a variable, for example, don't set `steam_library` just set `save_path` instead.
 
 
@@ -70,6 +72,7 @@ opt_wait_for_process_exit_max_interval=2
 * `opt_wait_for_process_exit` wait for Conan Exiles to exit before starting the (optional) check and backup. (default: 120 second timeout)
 * `opt_wait_for_process_exit_interval` how long to wait before checking the Conan Exiles process state (seconds) (default: 15)
 * `opt_wait_for_process_exit_max_interval` how many intervals to cycle through before timing out (default: 8)
+* `opt_pause_on_end` causes the script to pause before exiting (for running it with a shortcut or from file explorer) (default: 0)
 
 ### Other Variables & Notes
 
