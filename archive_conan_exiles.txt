@@ -1,0 +1,16 @@
+;
+;	Conan Exiles
+;	Archiver Config
+;	SAMPLE
+;
+target_path=C:\Users\Public\Documents
+save_path=C:\Program Files (x86)\Steam\steamapps\common\Conan Exiles\ConanSandbox\Saved
+backup_prefix=conan_exiles_
+opt_delete_unless_success=1
+opt_check_db=1
+opt_use_game_sqlite=1
+opt_abort_backup_if_db_not_ok=1
+opt_wait_for_process_exit=1
+opt_wait_for_process_exit_interval=15
+opt_wait_for_process_exit_max_interval=8
+opt_pause_on_end=1
