@@ -36,7 +36,7 @@ or just in the same directory as the batch file.
 The format is simple, `variable name=value`
 
 These are override values so you only need to include settings that are different from the default.
-You can use semi colons for commentting lines.
+You can use semi colons for commenting lines.
 
 Sample:
 
