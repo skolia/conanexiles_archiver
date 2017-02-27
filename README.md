@@ -66,7 +66,7 @@ opt_pause_on_end=0
 
 ### Options
 
-| *Option* | *Usage* | *Default* | *Notes* |
+| *Name* | *Description* | *Default* | *Notes* |
 | :--- | :--- | :--- | :--- |
 | `opt_delete_unless_success` | If the archive process has any errors or warnings, delete the archive. | 1 | |
 | `opt_check_db` | Check *Conan Exiles* database before starting the backup. | 1 | |
@@ -80,7 +80,7 @@ opt_pause_on_end=0
 
 ### Other Variables & Notes
 
-| *Variable* | *Usage* | *Default* | *Notes* |
+| *Name* | *Description* | *Default* | *Notes* |
 | :--- | :--- | :--- | :--- |
 | `steam_library` | Points to where your Steam library is. | `C:\Program Files (x86)\Steam\` | |
 | `backup_base` | Base directory where you want to store backups. | Current user's Documents folder | |
