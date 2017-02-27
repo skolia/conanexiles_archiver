@@ -20,9 +20,9 @@ This is a tool (Windows Batch File) that can archive Conan Exiles configuration 
  
 Simply open the batch file in notepad and in the top section, change the variables to suit your tastes/configuration.
 
-##### Configuration File
+0##### Configuration File
 
-With notepad call it `archive_conan_exiles.txt` and it can be stored in any of the following locations:
+opt_pause_on_end=1Edit the sample file provided or create a batch file (text) with your favorite text editor (notepad works) and call the file `archive_conan_exiles.txt`.  You can save it in any of the following locations:
 
 ```
 %PUBLIC%\Config\Documents
@@ -54,6 +54,7 @@ opt_abort_backup_if_db_not_ok=1
 opt_wait_for_process_exit=0
 opt_wait_for_process_exit_interval=60
 opt_wait_for_process_exit_max_interval=2
+opt_pause_on_end=0
 ```
 
 *IMPORTANT:* Variable substitutions are *not* available in the configuration file so %COMPUTERNAME% and %USERPROFILE% will *not* work.  They will work if you use them in the batch file.
@@ -72,7 +73,7 @@ opt_wait_for_process_exit_max_interval=2
 * `opt_wait_for_process_exit` wait for Conan Exiles to exit before starting the (optional) check and backup. (default: 120 second timeout)
 * `opt_wait_for_process_exit_interval` how long to wait before checking the Conan Exiles process state (seconds) (default: 15)
 * `opt_wait_for_process_exit_max_interval` how many intervals to cycle through before timing out (default: 8)
-* `opt_pause_on_end` causes the script to pause before exiting (for running it with a shortcut or from file explorer) (default: 0)
+* `opt_pause_on_end` causes the script to pause before exiting (for running it with a shortcut or from file explorer) (default: 0).  Recommended to set to 1 if running from a shortcut or Windows file explorer.
 
 ### Other Variables & Notes
 
