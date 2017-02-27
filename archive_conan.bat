@@ -31,9 +31,9 @@ REM	----------------------------------------------------
 
 set game_name=Conan Exiles
 set script_name=Game Archiver
-set script_version=201702261442
+set script_version=201702271400
 set database_name=game.db
-set config_file=archive_conan_exiles.conf
+set config_file=archive_conan_exiles.txt
 set conan_exe=ConanSandbox.exe
 set windows_program_files=%ProgramFiles(x86)%
 if not defined windows_program_files set windows_program_files=%ProgramFiles%
@@ -99,6 +99,7 @@ set opt_abort_backup_if_db_not_ok=1
 set opt_wait_for_process_exit=0
 set opt_wait_for_process_exit_interval=15
 set opt_wait_for_process_exit_max_interval=8
+set opt_pause_on_end=0
 
 REM	----------------------------------------------------
 REM	Variables
@@ -264,7 +265,7 @@ REM	----------------------------------------------------
 
 if %errorlevel% neq 0 if [%opt_delete_unless_success%]==[1] echo Backup: Deleting Backup
 if %errorlevel% neq 0 if [%opt_delete_unless_success%]==[1] del "%target_path%\%save_name%"
-goto :eof
+goto :end_script
 
 
 REM	----------------------------------------------------
@@ -279,7 +280,7 @@ REM	-------------------------
 echo Operation Aborted.
 if not defined error_message set error_message=Unknown Error
 if defined error_message echo %error_message%
-goto :eof
+goto :end_script
 
 REM	-------------------------
 REM	Exit: Already Running
@@ -362,6 +363,14 @@ echo Wait Interval # %interval_count% / %opt_wait_for_process_exit_max_interval%
 timeout /t %opt_wait_for_process_exit_interval%
 goto :loop_wait_for_exit
 
+
+REM	-----------------------
+REM	End Script
+REM	-----------------------
+
+:end_script
+if [%opt_pause_on_end%]==[1] pause
+goto :eof
 
 REM	-----------------------
 REM	Show Banner
