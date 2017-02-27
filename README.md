@@ -6,19 +6,21 @@ This is a tool (Windows Batch File) that can archive Conan Exiles configuration 
 
 ## Requirements
 
-A copy of the game "Conan Exiles"
-
-7-Zip Archive Utility (http://www.7-zip.org)
+* A copy of the game "Conan Exiles"
+* 7-Zip Archive Utility (http://www.7-zip.org)
 
 ### Getting Started
 
-You'll need to configure the archiver, you can do this either by editing the batch file directly or creating a configuration file with notepad.
+1. Place the batch file somewhere on your system.  (I have a folder called "C:\Batch")
+2. Open notepad and create a configuration file *or* edit the batch file to tell it where to put things and set options
+3. Open a command prompt or double click on the batch file to run (if you do the latter, it does not pause at the end but I'll add that as an option soon).
 
-#### Editing the Batch File
+#### Configuration
+##### Editing the Batch File
  
 Simply open the batch file in notepad and in the top section, change the variables to suit your tastes/configuration.
 
-#### Configuration File
+##### Configuration File
 
 With notepad call it `archive_conan_exiles.txt` and it can be stored in any of the following locations:
 
