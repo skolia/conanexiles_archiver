@@ -72,7 +72,7 @@ opt_pause_on_end=0
 | `opt_check_db` | Check *Conan Exiles* database before starting the backup. | 1 | |
 | `opt_use_game_sqlite` | Use the game's copy of SQLite3 | 1 | Recommended |
 | `opt_abort_backup_if_db_not_ok` | Abort the backup if the database check fails | 1 | Recommended |
-| `opt_wait_for_process_exit` | Wait for *Conan Exiles* to exit before starting the (optional) check and backup. | 1 | (Default is 120 seconds) |
+| `opt_wait_for_process_exit` | Wait for *Conan Exiles* to exit before starting the (optional) check and backup. | 1 |  |
 | `opt_wait_for_process_exit_interval` | How long to wait before checking the *Conan Exiles* process state (seconds) | 15 | |
 | `opt_wait_for_process_exit_max_interval` | How many intervals to cycle through before timing out | 8 | |
 | `opt_pause_on_end` | Causes the script to pause before exiting | 0 | Recommended when using a shortcut |
@@ -82,7 +82,7 @@ opt_pause_on_end=0
 
 | *Variable* | *Usage* | *Default* | *Notes* |
 | :--- | :--- | :--- | :--- |
-| `steam_library` | Points to where your Steam library is. | Default is `C:\Program Files (x86)\Steam\` | |
+| `steam_library` | Points to where your Steam library is. | `C:\Program Files (x86)\Steam\` | |
 | `backup_base` | Base directory where you want to store backups. | | |
 | `backup_prefix` | Optional prefix for the backup filename, the filename is `YYYYMMDDHHMM`. | `conan_exiles_` | |
 | `save_path` | Calcuated variable (using `steam_library` as the base) to locate the data directory for *Conan Exiles*. | | 
