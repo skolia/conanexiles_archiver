@@ -31,7 +31,7 @@ REM	----------------------------------------------------
 
 set game_name=Conan Exiles
 set script_name=Game Archiver
-set script_version=201702271400
+set script_version=201703011914
 set database_name=game.db
 set config_file=archive_conan_exiles.txt
 set conan_exe=ConanSandbox.exe
@@ -114,7 +114,7 @@ set status_conan=0
 set flag_timeout=0
 set flag_config_exists=0
 set using_config_file=0
-
+set debug_mode=0
 
 REM	----------------------------------------------------
 REM	Load Configuration File (If Exists)
@@ -319,10 +319,13 @@ REM	Usage: get_process_status [process_name] variable
 REM	-----------------------
 
 :get_process_status
-set %2=0
+set process_status_result=-1
 set task_process_name=%~1
-set conan_running=0
-if defined task_process_name FOR /F %%x IN ('tasklist /NH /FI "IMAGENAME eq %task_process_name%"') DO IF %%x == %task_process_name% set %2=1
+if [%debug_mode%]==[1] echo Checking Process: %task_process_name%
+if defined task_process_name set process_status_result=0
+if defined task_process_name for /F %%x in ('tasklist /NH /FI "IMAGENAME eq %task_process_name%"') do if [%%x]==[%task_process_name%] set process_status_result=1
+if [%debug_mode%]==[1] echo Returning: %process_status_result%
+set %2=%process_status_result%
 goto :eof
 
 
@@ -354,8 +357,9 @@ set flag_timeout=0
 set /a wait_time_display=%opt_wait_for_process_exit_interval% * %opt_wait_for_process_exit_max_interval%
 echo Waiting for %game_name% to shutdown (up to %wait_time_display% seconds)
 :loop_wait_for_exit
+set status_conan=0
 call :get_process_status %conan_exe% status_conan
-if [%status_conan%]==1 goto :eof
+if [%status_conan%]==[0] goto :eof
 set /a interval_count=%interval_count% + 1
 if %interval_count% gtr %opt_wait_for_process_exit_max_interval% set flag_timeout=1
 if [%flag_timeout%]==[1] goto :eof
@@ -379,6 +383,7 @@ REM	-----------------------
 :show_banner
 echo %script_name% v%script_version%
 echo Configured for %game_name%
+if [%debug_mode%]==[1] echo DEBUG ON
 echo.
 goto :eof
 
