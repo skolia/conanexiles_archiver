@@ -45,7 +45,9 @@ Sample:
 ;	Archiver Config
 ;
 target_path=C:\Private\Backups\Conan Exiles
-save_path=C:\Games\Steam\Library\steamapps\common\Conan Exiles\ConanSandbox\Saved
+game_path=C:\Games\Steam\Library\steamapps\common\Conan Exiles\ConanSandbox
+saved_path=C:\Games\Steam\Library\steamapps\common\Conan Exiles\ConanSandbox\Saved
+mods_path=C:\Games\Steam\Library\steamapps\common\Conan Exiles\ConanSandbox\Mods
 backup_prefix=
 opt_delete_unless_success=1
 opt_check_db=1
@@ -59,7 +61,7 @@ opt_pause_on_end=0
 
 *IMPORTANT:* Variable substitutions are *not* available in the configuration file so `%COMPUTERNAME%` and `%USERPROFILE%` will *not* work.  They will work if you use them in the batch file.
 
-*NOTE:* When using a configuration file, it's best to substitute the final settings of a variable, for example, don't set `steam_library` just set `save_path` instead.
+*NOTE:* When using a configuration file, it's best to substitute the final settings of a variable, for example, don't set `steam_library` just set `saved_path` and `mods_path` instead.
 
 
 ## Program Variables and Options
@@ -85,7 +87,10 @@ opt_pause_on_end=0
 | `steam_library` | Points to where your Steam library is. | `C:\Program Files (x86)\Steam\` | |
 | `backup_base` | Base directory where you want to store backups. | Current user's Documents folder | |
 | `backup_prefix` | Optional prefix for the backup filename, the filename is `YYYYMMDDHHMM`. | `conan_exiles_` | |
-| `save_path` | Calcuated variable (using `steam_library` as the base) to locate the data directory for *Conan Exiles*. | `steam_library\steamapps\common\Conan Exiles\ConanSandbox\Saved` | |
+| `game_path` | Calculated variable (using `steam_library` as the base) to locate the data directory for *Conan Exiles*. | `steam_library\steamapps\common\Conan Exiles\ConanSandbox` |  |
+| `saved_path` | Calculated variable (using `game_path` as the base) to locate the data directory for *Conan Exiles*. | `steam_library\steamapps\common\Conan Exiles\ConanSandbox\Saved` |  |
+| `mods_path` | Calculated variable (using `game_path` as the base) to locate the modlist directory for *Conan Exiles*. | `steam_library\steamapps\common\Conan Exiles\ConanSandbox\Mods` |  |
+| `save_path` | Calculated variable (using `steam_library` as the base) to locate the data directory for *Conan Exiles*. | `steam_library\steamapps\common\Conan Exiles\ConanSandbox\Saved` | *NO LONGER USED* |
 | `db_tool` | Database tool to use for database checks.  | `sqlite3.exe` | |
 | `z_path` | Complete pathname to the 7-Zip executable called `7z.exe` | `C:\Program Files\7-Zip\7z.exe` | |
 | `z_arg` | Arguments to give 7-Zip. | `a -r -y` | |
