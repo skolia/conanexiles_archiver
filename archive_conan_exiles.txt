@@ -4,7 +4,9 @@
 ;	SAMPLE
 ;
 target_path=C:\Users\Public\Documents
-save_path=C:\Program Files (x86)\Steam\steamapps\common\Conan Exiles\ConanSandbox\Saved
+game_path=C:\Program Files (x86)\Steam\steamapps\common\Conan Exiles
+saved_path=C:\Program Files (x86)\Steam\steamapps\common\Conan Exiles\ConanSandbox\Saved
+mods_path=C:\Program Files (x86)\Steam\steamapps\common\Conan Exiles\ConanSandbox\Mods
 backup_prefix=conan_exiles_
 opt_delete_unless_success=1
 opt_check_db=1
