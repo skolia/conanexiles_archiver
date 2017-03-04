@@ -31,7 +31,7 @@ REM	----------------------------------------------------
 
 set game_name=Conan Exiles
 set script_name=Game Archiver
-set script_version=201703011914
+set script_version=201703040020
 set database_name=game.db
 set config_file=archive_conan_exiles.txt
 set conan_exe=ConanSandbox.exe
@@ -54,7 +54,9 @@ REM	----------------------------------------------------
 set steam_library=%windows_program_files%\Steam
 set backup_base=%USERPROFILE%
 set backup_prefix=conan_exiles_
-set save_path=%steam_library%\steamapps\common\Conan Exiles\ConanSandbox\Saved
+set game_path=%steam_library%\steamapps\common\Conan Exiles\ConanSandbox
+set saved_path=%game_path%\Saved
+set mods_path=%game_path%\Mods
 set target_path=%backup_base%\Documents
 set tool_root=%SystemDrive%\Tools
 set db_tool=sqlite3.exe
@@ -154,14 +156,14 @@ REM	----------------------------------------------------
 
 if not defined opt_use_game_sqlite set opt_use_game_sqlite=1
 
-if [%opt_use_game_sqlite%]==[1] set tool_sqlite=%save_path%\%db_tool%
+if [%opt_use_game_sqlite%]==[1] set tool_sqlite=%saved_path%\%db_tool%
 if [%opt_use_game_sqlite%]==[0] set tool_sqlite=%tool_root%\%db_tool%
 
 if not defined opt_check_db set opt_check_db=0
 if [%opt_check_db%]==[1] if not defined tool_sqlite set opt_check_db=0
 if [%opt_check_db%]==[1] if not defined database_name set opt_check_db=0
 if [%opt_check_db%]==[1] if not exist "%tool_sqlite%" set opt_check_db=0
-if [%opt_check_db%]==[1] if not exist "%save_path%\%database_name%" set opt_check_db=0
+if [%opt_check_db%]==[1] if not exist "%saved_path%\%database_name%" set opt_check_db=0
 
 
 REM	----------------------------------------------------
@@ -178,13 +180,14 @@ REM	Configuration Check
 REM	----------------------------------------------------
 
 set error_message=
-if not defined save_path set error_message=save_path is not defined
+if not defined saved_path set error_message=saved_path is not defined
+if not defined mods_path set error_message=mods_path is not defined
 if not defined steam_library set error_message=steam_library is not defined
 if not defined z_path set error_message=z_path (archiver) is not defined
 if defined error_message goto :error_exit
 
 set error_message=
-if not exist "%save_path%" set error_message=Could not locate %game_name% save folder. (%save_path%)
+if not exist "%game_path%" set error_message=Could not locate %game_name% save folder. (%game_path%)
 if not exist "%steam_library%" set error_message=Could not locate Steam library (%steam_library%)
 if not exist "%z_path%" set error_message=Could not located archiver (%z_path%)
 
@@ -209,7 +212,7 @@ call :BuildTimeStamp timestamp
 if [%option%]==[checkdb] echo Checking Database Only
 if [%opt_check_db%]==[1] echo Database Check: Checking %game_name% database
 if [%opt_check_db%]==[1] echo Database Check: Started at %date% %time%
-if [%opt_check_db%]==[1] call :check_database "%save_path%\%database_name%"
+if [%opt_check_db%]==[1] call :check_database "%saved_path%\%database_name%"
 if [%opt_check_db%]==[1] echo Database Check: Finished at %date% %time%
 
 set database_status=ERROR: %errorlevel%
@@ -244,7 +247,8 @@ set archive_cmd=
 if defined z_path set archive_cmd=%archive_cmd%"%z_path%"
 if defined z_arg set archive_cmd=%archive_cmd% %z_arg%
 set archive_cmd=%archive_cmd% "%target_path%\%save_name%"
-set archive_cmd=%archive_cmd% "%save_path%\*.*"
+REM set archive_cmd=%archive_cmd% "%saved_path%\*.*" "%mods_path%\*.*"
+set archive_cmd=%archive_cmd% "%saved_path%" "%mods_path%"
 
 %archive_cmd%
 
@@ -409,7 +413,8 @@ echo steam_library: %steam_library%
 echo backup_base: %backup_base%
 if defined backup_prefix echo backup_prefix: %backup_prefix%
 if not defined backup_prefix echo backup_prefix: NONE
-echo save_path: %save_path%
+echo saved_path: %saved_path%
+echo mods_path: %mods_path%
 echo target_path: %target_path%
 echo.
 echo Tools:
